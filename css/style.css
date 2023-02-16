@@ -1,0 +1,108 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--gap: .5em;
+	--index: calc(1vw + 1vh);
+	--color-dark: #000;
+}
+
+body {
+	overflow: hidden;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.header {
+	text-transform: uppercase;
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	letter-spacing: .1em;
+	font-size: calc(var(--index) * 2.8);
+	position: absolute;
+	font-weight: 200;
+	text-align: center;
+	opacity: .9;
+	margin-top: .2em;
+}
+
+.header span {
+	display: block;
+	font-family: Helvetica, sans-serif;
+	font-size: calc(var(--index) * .75);
+	margin-top: 5px;
+}
+
+.gallery {
+	width: 35vw;
+	column-width: 2em;
+	gap: var(--gap);
+	transform: scale(8.2);
+	will-change: transform;
+	transition: transform 1s cubic-bezier(.075, 1, .25, 1), opacity 3s;
+}
+
+.gallery__item {
+	margin-bottom: var(--gap);
+	transform: scale(1.001);
+	will-change: transform;
+	transition: .3s;
+}
+
+.gallery__item:hover {
+	transform: scale(1.05);
+}
+
+.gallery__item img {
+	width: 100%;
+	display: block;
+}
+
+.loaded .gallery {
+	opacity: 1;
+}
+
+.loaded .header span {
+	opacity: 0;
+}
+
+
+
+/* DARK MODE OS */
+
+@media (prefers-color-scheme: dark) {
+	body {
+		background-color: var(--color-dark);
+	}
+
+	.header {
+		filter: invert(100%);
+	}
+}
+
+
+
+/* ADAPTATION */
+
+@media (max-width: 1200px) {
+	.gallery__item img {
+		width: 90%;
+	}
+}
+
+@media (max-width: 790px) {
+	.gallery__item img {
+		width: 80%;
+	}
+	.gallery {
+		column-width: 1.8em;
+	}
+}
+
+
+
+
